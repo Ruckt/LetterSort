@@ -15,7 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        print("HELLO LETTER SORT")
+
+        let trie:TrieManager = TrieManager()
+        let wordList = uploadWordList()        
+        
+        wordList.enumerateLines({ (line, stop) in
+            trie.insertWord(line)
+        })
+        
+        print("Trie Made")
+        
+        trie.find("zebra")
+        trie.find("nighthawk")
+        
         return true
     }
 
@@ -41,6 +54,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    func uploadWordList() -> String {
+        if let filepath = NSBundle.mainBundle().pathForResource("WordList", ofType: "txt") {
+            do {
+                let contents = try NSString(contentsOfFile: filepath, usedEncoding: nil) as String
+                return contents
+            } catch {
+                // contents could not be loaded
+                return ""
+            }
+        } else {
+            // WordList.txt not found!
+            return ""
+        }
+    }
+    
+    
 
 }
 
