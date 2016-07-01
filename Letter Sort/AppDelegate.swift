@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("HELLO LETTER SORT")
+        
 
         let trie:TrieManager = TrieManager()
         let wordList = uploadWordList()        
@@ -24,10 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             trie.insertWord(line)
         })
         
+        
         print("Trie Made")
         
-        trie.find("zebra")
-        trie.find("nighthawk")
+        let centralVC = self.window!.rootViewController as! CentralViewController
+        centralVC.trie = trie
         
         return true
     }

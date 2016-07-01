@@ -11,10 +11,13 @@ import Foundation
 class TrieNode {
     var letter:Character
     var fullWord:Bool
+    var leadingLetters:String
     var child = [Character:TrieNode]()
     
-    init (letter1:Character, fullWord2:Bool) {
-        letter = letter1
-        fullWord = fullWord2
+    init (letter:Character, leadingLetters:String, fullWord:Bool) {
+        self.letter = letter
+        self.fullWord = fullWord
+        self.leadingLetters = leadingLetters
     }
 }
+
