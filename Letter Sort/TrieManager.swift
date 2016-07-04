@@ -16,7 +16,6 @@ class TrieManager {
         var currentNode:TrieNode? = root
         var letterCounter = 0
         
-        
         for letter in word.characters {
             let fulllWord = letterCounter == wordLength ? true : false
             letterCounter = letterCounter + 1
@@ -54,14 +53,14 @@ class TrieManager {
     }
     
     func findAnagramsOf(key:String, node:TrieNode) -> [String] {
+       // print("Node: \(node.letter)")
         let keyLength = key.characters.count
 
         var wordList:[String] = []
-        let currentNode:TrieNode? = root
         
         if node.fullWord {
-            print("Key: \(key)")
-            print("Leading letters: \(node.leadingLetters)")
+           // print("Key: \(key)")
+            //print("Leading letters: \(node.leadingLetters)")
             wordList.append(node.leadingLetters)
         }
         
@@ -84,8 +83,10 @@ class TrieManager {
 
         if remainingKey.characters.count >= 1 {
             for char in remainingKey.characters {
-                let results = findAnagramsOf(remainingKey, node: currentNode!.child[char]!) as [String]
-                wordList.appendContentsOf(results)
+                if node.child[char] != nil {
+                    let results = findAnagramsOf(remainingKey, node: node.child[char]!) as [String]
+                    wordList.appendContentsOf(results)
+                }
             }
         }
         

@@ -27,10 +27,16 @@ class CentralViewController: UIViewController {
 //        trie.find("blank")
         trie.find("edan")
         
-        let word = "edan"
+        var word = "sophie"
         print("Finding Anagrams of \(word):")
-        let anagrams = trie.findAnagramsOf(word, node: trie.root)
+        var anagrams = trie.findAnagramsOf(word, node: trie.root)
         print(anagrams)
+  
+        word = "merav"
+        print("Finding Anagrams of \(word):")
+        anagrams = trie.findAnagramsOf(word, node: trie.root)
+        print(anagrams)
+        
     }
 
     override func didReceiveMemoryWarning() {
