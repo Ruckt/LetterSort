@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Central View Controller-->
@@ -16,11 +17,63 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Letter Sort" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkK-nb-k6Q">
+                                <rect key="frame" x="182" y="70" width="236" height="54.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="50"/>
+                                <color key="textColor" red="0.0" green="0.00048527503346769928" blue="0.62703450520833326" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What words shall we find now?" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tFg-AQ-2Kj">
+                                <rect key="frame" x="50" y="149.5" width="500" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ypq-1k-ZPo">
+                                <rect key="frame" x="20" y="204.5" width="560" height="395.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextCell" id="D6f-HC-9GO">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="D6f-HC-9GO" id="dgI-ry-K4Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ypq-1k-ZPo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="0WR-ZG-RhX"/>
+                            <constraint firstItem="VkK-nb-k6Q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="E8I-lq-iha"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ypq-1k-ZPo" secondAttribute="bottom" id="GZ2-v1-r90"/>
+                            <constraint firstItem="tFg-AQ-2Kj" firstAttribute="top" secondItem="VkK-nb-k6Q" secondAttribute="bottom" constant="25" id="Jb4-pK-Jjg"/>
+                            <constraint firstItem="VkK-nb-k6Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qq9-Xn-B9i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tFg-AQ-2Kj" secondAttribute="trailing" constant="30" id="U0M-Yx-Zw6"/>
+                            <constraint firstItem="tFg-AQ-2Kj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wh0-BQ-fGP"/>
+                            <constraint firstItem="tFg-AQ-2Kj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="e5h-yZ-6jG"/>
+                            <constraint firstItem="tFg-AQ-2Kj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o8y-ca-tw6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ypq-1k-ZPo" secondAttribute="trailing" id="uoD-KD-jtK"/>
+                            <constraint firstItem="Ypq-1k-ZPo" firstAttribute="top" secondItem="tFg-AQ-2Kj" secondAttribute="bottom" constant="25" id="vMa-JV-6AG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Wh0-BQ-fGP"/>
+                                <exclude reference="o8y-ca-tw6"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="letterInputTextField" destination="tFg-AQ-2Kj" id="c4R-0U-Pad"/>
+                        <outlet property="titleLabel" destination="VkK-nb-k6Q" id="t1t-Mb-RmY"/>
+                        <outlet property="wordListTableView" destination="Ypq-1k-ZPo" id="QBL-bV-mMH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="419" y="308"/>
         </scene>
     </scenes>
 </document>

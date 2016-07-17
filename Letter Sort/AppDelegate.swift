@@ -17,19 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("HELLO LETTER SORT")
         
-
         let trie:TrieManager = TrieManager()
-        let wordList = uploadWordList()        
-        
-        wordList.enumerateLines({ (line, stop) in
-            trie.insertWord(line)
-        })
-        
-        
-        print("Trie Made")
-        
         let centralVC = self.window!.rootViewController as! CentralViewController
         centralVC.trie = trie
+        
+
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
+            print("start background")
+    
+            let wordList = self.uploadWordList()
+            
+            wordList.enumerateLines({ (line, stop) in
+                trie.insertWord(line)
+            })
+            
+            print("Trie Made")
+            centralVC.isTrieMade = true
+            centralVC.titleLabel.textColor = centralVC.givenColor
+        }
         
         return true
     }
@@ -71,8 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return ""
         }
     }
-    
-    
 
 }
 
