@@ -69,20 +69,24 @@ class TrieManager {
             return wordList
         }
         
-        // Find node.letter in key and remove.  then proceed
+        // Remove current letter and traverse rest of letters.
         var remainingKey = ""
+        var uniqueRemainingKey = Set<Character>()
         var found = false
         
+    
         for char in key.characters {
             if char == node.letter && !found {
                 found = true
             } else {
                 remainingKey = remainingKey + String(char)
+                uniqueRemainingKey.insert(char)
             }
         }
 
-        if remainingKey.characters.count >= 1 {
-            for char in remainingKey.characters {
+        // Use uniqueRemainingKey set to traverse each necessary node only once.
+        if uniqueRemainingKey.count >= 1 {
+            for char in uniqueRemainingKey {
                 if node.child[char] != nil {
                     let results = findAnagramsOf(remainingKey, node: node.child[char]!) as [String]
                     wordList.appendContentsOf(results)
