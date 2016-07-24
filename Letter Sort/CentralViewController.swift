@@ -22,7 +22,6 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     var isTrieMade = false
     
     override func viewDidLoad() {
-        print("view controller")
         super.viewDidLoad()
         wordListTableView.delegate = self
         wordListTableView.dataSource = self
@@ -36,7 +35,6 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-
     //        var word = "sophie"
 //        print("Finding Anagrams of \(word):")
 //        var anagrams = trie.findAnagramsOf(word, node: trie.root)
