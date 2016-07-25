@@ -13,10 +13,12 @@ class TrieNode {
     var fullWord:Bool
     var leadingLetters:String
     var child = [Character:TrieNode]()
+    var nodeValue:Int
     
-    init (letter:Character, leadingLetters:String, fullWord:Bool) {
+    init (letter:Character, leadingLetters:String, nodeValue: Int, fullWord:Bool) {
         self.letter = letter
         self.fullWord = fullWord
+        self.nodeValue = nodeValue
         self.leadingLetters = leadingLetters
     }
 }

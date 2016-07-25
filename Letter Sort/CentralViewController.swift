@@ -17,7 +17,8 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     let textCellIdentifier = "TextCell"
     
     var trie: TrieManager!
-    var anagrams : [String] = []
+    var anagrams : [String : Int] = [:]
+    var anagramsArray : [String] = []
     var givenColor: UIColor?
     var isTrieMade = false
     
@@ -54,6 +55,14 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     func runFindAnagramFor(word: String) {
         print("Finding Anagrams of \(word):")
         anagrams = trie.findAnagramsOf(word, node: trie.root)
+        for (word, value) in anagrams {
+            //
+            //  Sort Array based on value.
+            //
+            
+            anagramsArray.append(word)
+        }
+        
         print(anagrams)
         wordListTableView.reloadData()
     }
@@ -77,7 +86,7 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.selectionStyle = .None;
         cell.textLabel!.textColor = givenColor
         cell.textLabel!.textAlignment = .Center
-        cell.textLabel!.text = anagrams[row]
+        cell.textLabel!.text = anagramsArray[row]
         
         return cell
     }
