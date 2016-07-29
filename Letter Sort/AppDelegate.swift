@@ -23,10 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
-            print("start background")
     
             let wordList = self.uploadWordList()
-            
             wordList.enumerateLines({ (line, stop) in
                 trie.insertWord(line)
             })

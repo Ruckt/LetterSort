@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2004C9F1D456EA100E71012 /* Dictionary+Combining.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2004C9E1D456EA100E71012 /* Dictionary+Combining.swift */; };
 		E23755C01CD536A0000B26B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755BF1CD536A0000B26B0 /* AppDelegate.swift */; };
 		E23755C21CD536A0000B26B0 /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755C11CD536A0000B26B0 /* CentralViewController.swift */; };
 		E23755C51CD536A0000B26B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23755C31CD536A0000B26B0 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2004C9E1D456EA100E71012 /* Dictionary+Combining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Combining.swift"; sourceTree = "<group>"; };
 		E23755BC1CD536A0000B26B0 /* Letter Sort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Letter Sort.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23755BF1CD536A0000B26B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E23755C11CD536A0000B26B0 /* CentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				E23755BF1CD536A0000B26B0 /* AppDelegate.swift */,
 				E23755C11CD536A0000B26B0 /* CentralViewController.swift */,
 				E23755D11CD5413D000B26B0 /* TrieManager.swift */,
+				E2004C9E1D456EA100E71012 /* Dictionary+Combining.swift */,
 				E2BD20031D035D4700B78A91 /* TrieNode.swift */,
 				E23755C31CD536A0000B26B0 /* Main.storyboard */,
 				E23755C61CD536A0000B26B0 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */,
+				E2004C9F1D456EA100E71012 /* Dictionary+Combining.swift in Sources */,
 				E23755C21CD536A0000B26B0 /* CentralViewController.swift in Sources */,
 				E23755C01CD536A0000B26B0 /* AppDelegate.swift in Sources */,
 				E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */,
