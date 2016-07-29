@@ -16,6 +16,7 @@
 		E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755D11CD5413D000B26B0 /* TrieManager.swift */; };
 		E24DC6361D3F344A00472F33 /* TrieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24DC6341D3F344A00472F33 /* TrieEntity.swift */; };
 		E24DC63A1D4423D700472F33 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24DC6391D4423D700472F33 /* CoreDataStore.swift */; };
+		E28227661D4C1E60009FEA9B /* Dictionary+Combining.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28227651D4C1E60009FEA9B /* Dictionary+Combining.swift */; };
 		E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BD20031D035D4700B78A91 /* TrieNode.swift */; };
 		E2BD20061D03711B00B78A91 /* WordList.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2BD20051D03711B00B78A91 /* WordList.txt */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		E23755D11CD5413D000B26B0 /* TrieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieManager.swift; sourceTree = "<group>"; };
 		E24DC6341D3F344A00472F33 /* TrieEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieEntity.swift; sourceTree = "<group>"; };
 		E24DC6391D4423D700472F33 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		E28227651D4C1E60009FEA9B /* Dictionary+Combining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dictionary+Combining.swift"; path = "Letter Sort/Dictionary+Combining.swift"; sourceTree = "<group>"; };
 		E2BD20031D035D4700B78A91 /* TrieNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieNode.swift; sourceTree = "<group>"; };
 		E2BD20051D03711B00B78A91 /* WordList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WordList.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +52,7 @@
 		E23755B31CD536A0000B26B0 = {
 			isa = PBXGroup;
 			children = (
+				E28227651D4C1E60009FEA9B /* Dictionary+Combining.swift */,
 				E23755BE1CD536A0000B26B0 /* Letter Sort */,
 				E23755BD1CD536A0000B26B0 /* Products */,
 			);
@@ -158,6 +161,7 @@
 				E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */,
 				E24DC6361D3F344A00472F33 /* TrieEntity.swift in Sources */,
 				E20BB06C1D3C6D0000119A94 /* TrieModel.xcdatamodeld in Sources */,
+				E28227661D4C1E60009FEA9B /* Dictionary+Combining.swift in Sources */,
 				E23755C21CD536A0000B26B0 /* CentralViewController.swift in Sources */,
 				E23755C01CD536A0000B26B0 /* AppDelegate.swift in Sources */,
 				E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */,
