@@ -44,7 +44,6 @@ class TrieManager {
             }
             
             characterCount = characterCount + 1
-           // print("Leading letters: \(currentNode!.leadingLetters)")
             
             if characterCount == keyLength && currentNode!.fullWord == true { // we reached destination
                 print("Key \(key) Found!")
@@ -60,7 +59,6 @@ class TrieManager {
         var wordList:[String : Int] = [:]
         
         if node.fullWord {
-         print("Leading letters: \(node.leadingLetters)")
             wordList[node.leadingLetters] = node.nodeValue
         }
         
@@ -74,7 +72,6 @@ class TrieManager {
         var uniqueRemainingKey = Set<Character>()
         var found = false
         
-    
         for char in key.characters {
             if char == node.letter && !found {
                 found = true
@@ -93,7 +90,6 @@ class TrieManager {
                 }
             }
         }
-        
         return wordList
     }
 

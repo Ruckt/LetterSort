@@ -55,15 +55,15 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     func runFindAnagramFor(word: String) {
         print("Finding Anagrams of \(word):")
         anagrams = trie.findAnagramsOf(word, node: trie.root)
-        for (word, value) in anagrams {
-            //
-            //  Sort Array based on value.
-            //
-            
+        
+        let anagramsSorted = anagrams.valueKeySorted
+        print(anagramsSorted)
+        anagramsArray.removeAll()
+
+        for (word, value) in anagramsSorted {
             anagramsArray.append(word)
         }
         
-        print(anagrams)
         wordListTableView.reloadData()
     }
     

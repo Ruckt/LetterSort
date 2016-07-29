@@ -13,3 +13,10 @@ extension Dictionary {
         }
     }
 }
+
+extension Dictionary where Value: Comparable {
+    var valueKeySorted: [(Key, Value)] {
+        return sort{ $0.1 > $1.1 }.sort{ String($0.0) < String($1.0) }
+    }
+
+}
