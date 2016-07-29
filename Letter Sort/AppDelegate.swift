@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("HELLO LETTER SORT")
         
+       // let dataStore = CoreDataStore()
         let trie:TrieManager = TrieManager()
         let centralVC = self.window!.rootViewController as! CentralViewController
         centralVC.trie = trie
@@ -72,6 +75,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // WordList.txt not found!
             return ""
+        }
+    }
+    
+    func testCD() {
+        
+        print("Test CD")
+        
+        let dataStore = CoreDataStore()
+        
+        let moc = dataStore.managedObjectContext
+        
+        let entityTrie = NSEntityDescription.insertNewObjectForEntityForName("TrieEntity", inManagedObjectContext: moc) as! TrieEntity
+        
+        let testNode = TrieNode.init(letter: "b", leadingLetters: "mnopqrst", fullWord: false)
+        
+        // add our data
+        entityTrie.setValue(1, forKey: "fullWord")
+        entityTrie.setValue("abcdefghijklmnop", forKey: "leadingLetters")
+        entityTrie.setValue("A", forKey: "letter")
+        
+        let dictionary : Dictionary = ["p":testNode]
+        let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(dictionary)
+        entityTrie.setValue(data, forKey: "child")
+    
+        
+        do {
+            try moc.save()
+            print("MOC Saved")
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+    func fetch() {
+        
+        let dataStore = CoreDataStore()
+        
+        let moc = dataStore.managedObjectContext
+
+        let personFetch = NSFetchRequest(entityName: "TrieEntity")
+        
+        do {
+            let fetchedTrie = try moc.executeFetchRequest(personFetch) as! [TrieEntity]
+            print(fetchedTrie.count)
+            print(fetchedTrie.first?.fullWord)
+            print(fetchedTrie.first?.leadingLetters)
+            print(fetchedTrie.first?.letter)
+            
+            
+        } catch {
+            fatalError("Failed to fetch person: \(error)")
         }
     }
 

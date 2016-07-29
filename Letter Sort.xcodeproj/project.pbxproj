@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E2004C9F1D456EA100E71012 /* Dictionary+Combining.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2004C9E1D456EA100E71012 /* Dictionary+Combining.swift */; };
+		E20BB06C1D3C6D0000119A94 /* TrieModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E20BB06A1D3C6D0000119A94 /* TrieModel.xcdatamodeld */; };
 		E23755C01CD536A0000B26B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755BF1CD536A0000B26B0 /* AppDelegate.swift */; };
 		E23755C21CD536A0000B26B0 /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755C11CD536A0000B26B0 /* CentralViewController.swift */; };
 		E23755C51CD536A0000B26B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23755C31CD536A0000B26B0 /* Main.storyboard */; };
 		E23755C71CD536A0000B26B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23755C61CD536A0000B26B0 /* Assets.xcassets */; };
 		E23755CA1CD536A0000B26B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23755C81CD536A0000B26B0 /* LaunchScreen.storyboard */; };
 		E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755D11CD5413D000B26B0 /* TrieManager.swift */; };
+		E24DC6361D3F344A00472F33 /* TrieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24DC6341D3F344A00472F33 /* TrieEntity.swift */; };
+		E24DC63A1D4423D700472F33 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24DC6391D4423D700472F33 /* CoreDataStore.swift */; };
 		E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BD20031D035D4700B78A91 /* TrieNode.swift */; };
 		E2BD20061D03711B00B78A91 /* WordList.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2BD20051D03711B00B78A91 /* WordList.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E2004C9E1D456EA100E71012 /* Dictionary+Combining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Combining.swift"; sourceTree = "<group>"; };
+		E20BB06B1D3C6D0000119A94 /* TrieModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrieModel.xcdatamodel; sourceTree = "<group>"; };
 		E23755BC1CD536A0000B26B0 /* Letter Sort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Letter Sort.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23755BF1CD536A0000B26B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E23755C11CD536A0000B26B0 /* CentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		E23755C91CD536A0000B26B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E23755CB1CD536A0000B26B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23755D11CD5413D000B26B0 /* TrieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieManager.swift; sourceTree = "<group>"; };
+		E24DC6341D3F344A00472F33 /* TrieEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieEntity.swift; sourceTree = "<group>"; };
+		E24DC6391D4423D700472F33 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		E2BD20031D035D4700B78A91 /* TrieNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieNode.swift; sourceTree = "<group>"; };
 		E2BD20051D03711B00B78A91 /* WordList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WordList.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,8 +69,10 @@
 				E23755BF1CD536A0000B26B0 /* AppDelegate.swift */,
 				E23755C11CD536A0000B26B0 /* CentralViewController.swift */,
 				E23755D11CD5413D000B26B0 /* TrieManager.swift */,
-				E2004C9E1D456EA100E71012 /* Dictionary+Combining.swift */,
+				E20BB06A1D3C6D0000119A94 /* TrieModel.xcdatamodeld */,
+				E24DC6341D3F344A00472F33 /* TrieEntity.swift */,
 				E2BD20031D035D4700B78A91 /* TrieNode.swift */,
+				E24DC6391D4423D700472F33 /* CoreDataStore.swift */,
 				E23755C31CD536A0000B26B0 /* Main.storyboard */,
 				E23755C61CD536A0000B26B0 /* Assets.xcassets */,
 				E23755C81CD536A0000B26B0 /* LaunchScreen.storyboard */,
@@ -148,8 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24DC63A1D4423D700472F33 /* CoreDataStore.swift in Sources */,
 				E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */,
-				E2004C9F1D456EA100E71012 /* Dictionary+Combining.swift in Sources */,
+				E24DC6361D3F344A00472F33 /* TrieEntity.swift in Sources */,
+				E20BB06C1D3C6D0000119A94 /* TrieModel.xcdatamodeld in Sources */,
 				E23755C21CD536A0000B26B0 /* CentralViewController.swift in Sources */,
 				E23755C01CD536A0000B26B0 /* AppDelegate.swift in Sources */,
 				E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */,
@@ -307,6 +315,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E20BB06A1D3C6D0000119A94 /* TrieModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E20BB06B1D3C6D0000119A94 /* TrieModel.xcdatamodel */,
+			);
+			currentVersion = E20BB06B1D3C6D0000119A94 /* TrieModel.xcdatamodel */;
+			path = TrieModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E23755B41CD536A0000B26B0 /* Project object */;
 }

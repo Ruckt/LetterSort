@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="TrieEntity" representedClassName=".TrieEntity" syncable="YES">
+        <attribute name="child" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="fullWord" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="leadingLetters" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="letter" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TrieEntity" positionX="-63" positionY="-18" width="128" height="105"/>
+    </elements>
+</model>
