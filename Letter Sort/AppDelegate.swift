@@ -88,16 +88,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let entityTrie = NSEntityDescription.insertNewObjectForEntityForName("TrieEntity", inManagedObjectContext: moc) as! TrieEntity
         
-        let testNode = TrieNode.init(letter: "b", leadingLetters: "mnopqrst", fullWord: false)
+      //  let testNode = TrieNode.init(letter: "b", leadingLetters: "mnopqrst", fullWord: false)
         
         // add our data
         entityTrie.setValue(1, forKey: "fullWord")
         entityTrie.setValue("abcdefghijklmnop", forKey: "leadingLetters")
         entityTrie.setValue("A", forKey: "letter")
         
-        let dictionary : Dictionary = ["p":testNode]
-        let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(dictionary)
-        entityTrie.setValue(data, forKey: "child")
+        //let dictionary : Dictionary = ["p":testNode]
+       // let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(dictionary)
+      //  entityTrie.setValue(data, forKey: "child")
     
         
         do {

@@ -15,5 +15,5 @@ class TrieEntity: NSManagedObject {
     @NSManaged var fullWord: NSNumber?
     @NSManaged var leadingLetters: String?
     @NSManaged var letter: String?
-    @NSManaged var child: NSData?
+    @NSManaged var relationship: TrieEntity?
 }
