@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var filePath : String {
+        let manager = NSFileManager.defaultManager()
+        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
+        return url.URLByAppendingPathComponent("TrieData").path!
+    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -20,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let trie:TrieManager = TrieManager()
         let centralVC = self.window!.rootViewController as! CentralViewController
         centralVC.trie = trie
-        
+
 
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
     
@@ -32,6 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Trie Made")
             centralVC.isTrieMade = true
             centralVC.titleLabel.textColor = centralVC.givenColor
+            
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
+               let list = trie.crawlTheTrie(trie.root)
+               let alpha = list.sort { $0 < $1 }
+                print("Count: \(alpha.count)")
+                print(alpha)
+            }
         }
         
         return true

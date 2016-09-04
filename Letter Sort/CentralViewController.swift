@@ -107,6 +107,5 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         return true
     }
 
-
 }
 
