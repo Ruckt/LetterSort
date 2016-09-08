@@ -34,26 +34,16 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-    //        var word = "sophie"
-//        print("Finding Anagrams of \(word):")
-//        var anagrams = trie.findAnagramsOf(word, node: trie.root)
-//        print(anagrams)
-//  
-//        word = "CurlyDay"
-//        print("Finding Anagrams of \(word):")
-//        anagrams = trie.findAnagramsOf(word, node: trie.root)
-//        print(anagrams)
-        
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(true)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     func runFindAnagramFor(word: String) {
-        print("Finding Anagrams of \(word):")
+    //    print("Finding Anagrams of \(word):")
         anagrams = trie.findAnagramsOf(word, node: trie.root)
         
         let anagramsSorted = anagrams.valueKeySorted

@@ -11,7 +11,7 @@ import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
     var filePath : String {
@@ -19,36 +19,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
         return url.URLByAppendingPathComponent("TrieData").path!
     }
-
-
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("HELLO LETTER SORT")
+        
         
         let trie:TrieManager = TrieManager()
         let centralVC = self.window!.rootViewController as! CentralViewController
         centralVC.trie = trie
-
-
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
-    
-            let wordList = self.uploadWordList()
-            wordList.enumerateLines({ (line, stop) in
-                trie.insertWord(line)
-            })
-            
-            print("Trie Made")
-            centralVC.isTrieMade = true
-            centralVC.titleLabel.textColor = centralVC.givenColor
-            
+        
+        
+        if (true) {
             dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
-               let list = trie.crawlTheTrie(trie.root)
-               let alpha = list.sort { $0 < $1 }
-                print("Count: \(alpha.count)")
-                print(alpha)
+                
+                if let nodes = self.readFromFile() {
+                    trie.root = nodes[0]
+                    print("Un Archived")
+                    centralVC.isTrieMade = true
+                    centralVC.titleLabel.textColor = centralVC.givenColor
+                }
+            }
+        } else {
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
+                
+                let wordList = self.uploadWordList()
+                wordList.enumerateLines({ (line, stop) in
+                    trie.insertWord(line)
+                })
+                
+                print("Trie Made")
+                centralVC.isTrieMade = true
+                centralVC.titleLabel.textColor = centralVC.givenColor
+                
+                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned trie] in
+                    let list = trie.crawlTheTrie(trie.root)
+                    PersistanceManager().archiveOne(list)
+                    // let alpha = list.sort { $0 < $1 }
+                    
+                    //Count = 589,315
+                    print("Count: \(list.count)")
+                }
             }
         }
         
         return true
+    }
+    
+    func readFromFile() -> [TrieNode]? {
+        return PersistanceManager().unArchiveTrie()
     }
 
     func applicationWillResignActive(application: UIApplication) {

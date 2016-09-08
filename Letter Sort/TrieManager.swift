@@ -30,18 +30,32 @@ class TrieManager {
         }
     }
     
-    func crawlTheTrie(node: TrieNode) -> [String] {
-        
-        let nodeString = node.leadingLetters + node.letter
-        var nodeList:[String] = [nodeString]
+//    func crawlTheTrie(node: TrieNode) -> [String] {
+//        
+//        let nodeString = node.leadingLetters + node.letter
+//        var nodeList:[String] = [nodeString]
+//
+//        if node.child.count != 0 {
+//            for child in node.child.values {
+//                
+//                let list = crawlTheTrie(child)
+//                nodeList += list
+//            }
+//        }
+//        
+//        PersistanceManager().archiveOne(node)
+//        return nodeList
+//    }
 
-        if node.child.count == 0 {
-            return nodeList
-        } else {
+    func crawlTheTrie(node: TrieNode) -> [TrieNode] {
+ 
+        var nodeList:[TrieNode] = [node]
+        
+        if node.child.count != 0 {
             for child in node.child.values {
                 
-                let list = crawlTheTrie(child)
-                nodeList += list
+                let nodes = crawlTheTrie(child)
+                nodeList.appendContentsOf(nodes)
             }
         }
         return nodeList
@@ -70,7 +84,7 @@ class TrieManager {
     }
     
     func findAnagramsOf(key:String, node:TrieNode) -> [String : Int] {
-        print("Child of \(key): \(node.child)")
+       // print("Child of \(key): \(node.child)")
         let keyLength = key.characters.count
 
         var wordList:[String : Int] = [:]
@@ -152,3 +166,4 @@ class TrieManager {
     ]
 
 }
+

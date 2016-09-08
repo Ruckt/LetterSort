@@ -14,6 +14,7 @@
 		E23755C71CD536A0000B26B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23755C61CD536A0000B26B0 /* Assets.xcassets */; };
 		E23755CA1CD536A0000B26B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23755C81CD536A0000B26B0 /* LaunchScreen.storyboard */; };
 		E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755D11CD5413D000B26B0 /* TrieManager.swift */; };
+		E2474B2F1D7C83DE0030B24D /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */; };
 		E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BD20031D035D4700B78A91 /* TrieNode.swift */; };
 		E2BD20061D03711B00B78A91 /* WordList.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2BD20051D03711B00B78A91 /* WordList.txt */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		E23755C91CD536A0000B26B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E23755CB1CD536A0000B26B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23755D11CD5413D000B26B0 /* TrieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieManager.swift; sourceTree = "<group>"; };
+		E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		E2BD20031D035D4700B78A91 /* TrieNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieNode.swift; sourceTree = "<group>"; };
 		E2BD20051D03711B00B78A91 /* WordList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WordList.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +67,7 @@
 				E23755BF1CD536A0000B26B0 /* AppDelegate.swift */,
 				E23755C11CD536A0000B26B0 /* CentralViewController.swift */,
 				E23755D11CD5413D000B26B0 /* TrieManager.swift */,
+				E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */,
 				E2004C9E1D456EA100E71012 /* Dictionary+Combining.swift */,
 				E2BD20031D035D4700B78A91 /* TrieNode.swift */,
 				E23755C31CD536A0000B26B0 /* Main.storyboard */,
@@ -151,6 +154,7 @@
 				E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */,
 				E2004C9F1D456EA100E71012 /* Dictionary+Combining.swift in Sources */,
 				E23755C21CD536A0000B26B0 /* CentralViewController.swift in Sources */,
+				E2474B2F1D7C83DE0030B24D /* PersistanceManager.swift in Sources */,
 				E23755C01CD536A0000B26B0 /* AppDelegate.swift in Sources */,
 				E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */,
 			);
