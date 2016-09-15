@@ -23,27 +23,24 @@ class TrieNode:  NSObject, NSCoding {
     }
     
     class func path() -> String {
-        let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first
-        let path = documentsPath?.stringByAppendingString("/Person")
-        return path!
+        let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
+        let path = (documentsPath)! + "/Person"
+        return path
     }
     
     required init(coder aDecoder: NSCoder) {
-        letter = aDecoder.decodeObjectForKey("letter") as! String
-        leadingLetters = aDecoder.decodeObjectForKey("leadingLetters") as! String
-        fullWord = aDecoder.decodeObjectForKey("fullWord") as! Bool
-        child = aDecoder.decodeObjectForKey("child") as! [String:TrieNode]
-        nodeValue = aDecoder.decodeObjectForKey("nodeValue") as! Int
+        letter = aDecoder.decodeObject(forKey: "letter") as? String ?? ""
+        leadingLetters = aDecoder.decodeObject(forKey: "leadingLetters") as? String ?? ""
+        fullWord = aDecoder.decodeBool(forKey: "fullWord")
+        nodeValue = aDecoder.decodeObject(forKey: "nodeValue") as? Int ?? 0
+   }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(letter, forKey: "letter")
+        aCoder.encode(leadingLetters, forKey: "leadingLetters")
+        aCoder.encode(fullWord, forKey: "fullWord")
+        aCoder.encode(child, forKey: "child")
+        aCoder.encode(nodeValue, forKey: "nodeValue")
     }
-    
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(letter, forKey: "letter")
-        aCoder.encodeObject(leadingLetters, forKey: "leadingLetters")
-        aCoder.encodeObject(fullWord, forKey: "fullWord")
-        aCoder.encodeObject(child, forKey: "child")
-        aCoder.encodeObject(nodeValue, forKey: "nodeValue")
-    }
-    
-    
     
 }

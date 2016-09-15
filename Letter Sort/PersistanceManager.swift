@@ -14,38 +14,38 @@ class PersistanceManager {
     //let uniqueFileName = NSUUID().UUIDString
     let uniqueFileName = "LetterSort"
     
-    func archiveOne(nodes: [TrieNode]) {
+    func archiveOne(_ nodes: [TrieNode]) {
         
-        let path = getDocumentsDirectoryURL()?.URLByAppendingPathComponent(uniqueFileName)
-        let pathString = path!.absoluteString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "file://"))
+        let path = getDocumentsDirectoryURL()?.appendingPathComponent(uniqueFileName)
+        let pathString = path!.absoluteString.trimmingCharacters(in: CharacterSet(charactersIn: "file://"))
 
-        let data = NSKeyedArchiver.archivedDataWithRootObject(nodes)
+        let data = NSKeyedArchiver.archivedData(withRootObject: nodes)
         
-        data.writeToFile(pathString, atomically: true)
+        
+        try? data.write(to: URL(fileURLWithPath: pathString), options: [.atomic])
 
     }
     
     func unArchiveTrie() -> [TrieNode]? {
         
-        let fileManager = NSFileManager()
+        let fileManager = FileManager()
         
-        let path = getDocumentsDirectoryURL()?.URLByAppendingPathComponent(uniqueFileName)
-        let pathString = path!.absoluteString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "file://"))
+        let path = getDocumentsDirectoryURL()?.appendingPathComponent(uniqueFileName)
+        let pathString = path!.absoluteString.trimmingCharacters(in: CharacterSet(charactersIn: "file://"))
         print("Path: \(pathString)")
         
-        if fileManager.fileExistsAtPath(pathString) {
+        if fileManager.fileExists(atPath: pathString) {
             
-            let nodes = NSKeyedUnarchiver.unarchiveObjectWithFile(pathString) as! [TrieNode]
-            //print("Unarchiving: \(node.leadingLetters + node.letter)")
+            let nodes = NSKeyedUnarchiver.unarchiveObject(withFile: pathString) as! [TrieNode]
             return nodes
         }
         
         return nil
     }
     
-    func getDocumentsDirectoryURL() -> NSURL? {
-        let fileManager = NSFileManager()
-        if let docsDirectory = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first {
+    func getDocumentsDirectoryURL() -> URL? {
+        let fileManager = FileManager()
+        if let docsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
             return docsDirectory
         }
         return nil

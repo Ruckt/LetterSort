@@ -11,7 +11,7 @@ import Foundation
 class TrieManager {
     var root:TrieNode = TrieNode(letter: "\0", leadingLetters: "", nodeValue: 0, fullWord: false)
     
-    func insertWord(word:String) {
+    func insertWord(_ word:String) {
         let wordLength = word.characters.count - 1
         var currentNode:TrieNode? = root
         var letterCounter = 0
@@ -47,7 +47,7 @@ class TrieManager {
 //        return nodeList
 //    }
 
-    func crawlTheTrie(node: TrieNode) -> [TrieNode] {
+    func crawlTheTrie(_ node: TrieNode) -> [TrieNode] {
  
         var nodeList:[TrieNode] = [node]
         
@@ -55,13 +55,13 @@ class TrieManager {
             for child in node.child.values {
                 
                 let nodes = crawlTheTrie(child)
-                nodeList.appendContentsOf(nodes)
+                nodeList.append(contentsOf: nodes)
             }
         }
         return nodeList
     }
     
-    func find(key:String) {
+    func find(_ key:String) {
         let keyLength = key.characters.count
         
         var currentNode:TrieNode? = root
@@ -83,8 +83,7 @@ class TrieManager {
         }
     }
     
-    func findAnagramsOf(key:String, node:TrieNode) -> [String : Int] {
-       // print("Child of \(key): \(node.child)")
+    func findAnagramsOf(_ key:String, node:TrieNode) -> [String : Int] {
         let keyLength = key.characters.count
 
         var wordList:[String : Int] = [:]
@@ -128,9 +127,9 @@ class TrieManager {
     // MARK: Writing to file
     
     func getDocumentsDirectory() -> NSString {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
-        return documentsDirectory
+        return documentsDirectory as NSString
     }
     
 

@@ -15,13 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var filePath : String {
-        let manager = NSFileManager.defaultManager()
-        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        return url.URLByAppendingPathComponent("TrieData").path!
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+        return url.appendingPathComponent("TrieData").path
     }
     
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         print("HELLO LETTER SORT")
         
         
@@ -31,20 +31,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if (true) {
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [unowned self] in
                 
                 if let nodes = self.readFromFile() {
+                    print("Un Archived: \(nodes.count)")
                     trie.root = nodes[0]
-                    print("Un Archived")
+                    
                     centralVC.isTrieMade = true
                     centralVC.titleLabel.textColor = centralVC.givenColor
                 }
             }
         } else {
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned self] in
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [unowned self] in
                 
                 let wordList = self.uploadWordList()
-                wordList.enumerateLines({ (line, stop) in
+                wordList.enumerateLines(invoking: { (line, stop) in
                     trie.insertWord(line)
                 })
                 
@@ -52,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 centralVC.isTrieMade = true
                 centralVC.titleLabel.textColor = centralVC.givenColor
                 
-                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { [unowned trie] in
+                DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [unowned trie] in
                     let list = trie.crawlTheTrie(trie.root)
                     PersistanceManager().archiveOne(list)
                     // let alpha = list.sort { $0 < $1 }
@@ -70,31 +71,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return PersistanceManager().unArchiveTrie()
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
     
     func uploadWordList() -> String {
-        if let filepath = NSBundle.mainBundle().pathForResource("WordList", ofType: "txt") {
+        if let filepath = Bundle.main.path(forResource: "WordList", ofType: "txt") {
             do {
                 let contents = try NSString(contentsOfFile: filepath, usedEncoding: nil) as String
                 return contents

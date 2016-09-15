@@ -7,7 +7,7 @@
 //
 
 extension Dictionary {
-    mutating func merge<K, V>(dict: [K: V]){
+    mutating func merge<K, V>(_ dict: [K: V]){
         for (k, v) in dict {
             self.updateValue(v as! Value, forKey: k as! Key)
         }
@@ -16,7 +16,7 @@ extension Dictionary {
 
 extension Dictionary where Value: Comparable {
     var valueKeySorted: [(Key, Value)] {
-        return sort{ $0.1 > $1.1 }.sort{ String($0.0) < String($1.0) }
+        return sorted{ $0.1 > $1.1 }.sorted{ String(describing: $0.0) < String(describing: $1.0) }
     }
 
 }
