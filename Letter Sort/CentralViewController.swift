@@ -61,7 +61,6 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        [self refreshScreen];
         return anagrams.count
     }
 
@@ -92,6 +91,4 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return true
     }
-
 }
-

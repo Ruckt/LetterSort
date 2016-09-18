@@ -27,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let trie:TrieManager = TrieManager()
         let centralVC = self.window!.rootViewController as! CentralViewController
-        centralVC.trie = trie
-        
         
         if (true) {
             DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [unowned self] in
@@ -37,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Un Archived: \(nodes.count)")
                     trie.root = nodes[0]
                     
+                    centralVC.trie = trie
                     centralVC.isTrieMade = true
                     centralVC.titleLabel.textColor = centralVC.givenColor
                 }
@@ -50,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
                 
                 print("Trie Made")
+                centralVC.trie = trie
                 centralVC.isTrieMade = true
                 centralVC.titleLabel.textColor = centralVC.givenColor
                 

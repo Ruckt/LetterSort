@@ -32,6 +32,7 @@ class TrieNode:  NSObject, NSCoding {
         letter = aDecoder.decodeObject(forKey: "letter") as? String ?? ""
         leadingLetters = aDecoder.decodeObject(forKey: "leadingLetters") as? String ?? ""
         fullWord = aDecoder.decodeBool(forKey: "fullWord")
+        child = aDecoder.decodeObject(forKey: "child") as? [String:TrieNode] ?? [:]
         nodeValue = aDecoder.decodeObject(forKey: "nodeValue") as? Int ?? 0
    }
     
