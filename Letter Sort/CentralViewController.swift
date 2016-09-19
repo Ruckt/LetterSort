@@ -26,38 +26,24 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         wordListTableView.delegate = self
         wordListTableView.dataSource = self
-        wordListTableView.separatorStyle = .None
+        wordListTableView.separatorStyle = .none
         letterInputTextField.delegate = self
 
         givenColor = titleLabel.textColor
-        titleLabel.textColor = UIColor.redColor()
+        titleLabel.textColor = UIColor.red
 
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-    //        var word = "sophie"
-//        print("Finding Anagrams of \(word):")
-//        var anagrams = trie.findAnagramsOf(word, node: trie.root)
-//        print(anagrams)
-//  
-//        word = "CurlyDay"
-//        print("Finding Anagrams of \(word):")
-//        anagrams = trie.findAnagramsOf(word, node: trie.root)
-//        print(anagrams)
-        
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func runFindAnagramFor(word: String) {
+    func runFindAnagramFor(_ word: String) {
         print("Finding Anagrams of \(word):")
         anagrams = trie.findAnagramsOf(word, node: trie.root)
         
         let anagramsSorted = anagrams.valueKeySorted
-        print(anagramsSorted)
         anagramsArray.removeAll()
 
         for (word, value) in anagramsSorted {
@@ -70,22 +56,21 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // MARK: Table View Methods
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        [self refreshScreen];
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return anagrams.count
     }
 
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
-        let row = indexPath.row
-        cell.selectionStyle = .None;
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
+        let row = (indexPath as NSIndexPath).row
+        cell.selectionStyle = .none;
         cell.textLabel!.textColor = givenColor
-        cell.textLabel!.textAlignment = .Center
+        cell.textLabel!.textAlignment = .center
         cell.textLabel!.text = anagramsArray[row]
         
         return cell
@@ -93,8 +78,8 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: UITextFieldDelegate Methods
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        let letters = letterInputTextField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let letters = letterInputTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         print(letters!)
         letterInputTextField.resignFirstResponder()
         
@@ -106,7 +91,4 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return true
     }
-
-
 }
-

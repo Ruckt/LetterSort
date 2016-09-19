@@ -11,7 +11,7 @@ import Foundation
 class TrieManager {
     var root:TrieNode = TrieNode(letter: "\0", leadingLetters: "", nodeValue: 0, fullWord: false)
     
-    func insertWord(word:String) {
+    func insertWord(_ word:String) {
         let wordLength = word.characters.count - 1
         var currentNode:TrieNode? = root
         var letterCounter = 0
@@ -22,22 +22,53 @@ class TrieManager {
             let leadingLetters = (currentNode?.leadingLetters)! + String(letter)
             let nodeValue = (currentNode?.nodeValue)! + letterValue[String(letter)]!
             
-            if currentNode!.child[letter] == nil {
-                currentNode!.child[letter] = TrieNode(letter: letter, leadingLetters: leadingLetters, nodeValue: nodeValue, fullWord: fulllWord)
+            if currentNode!.child[String(letter)] == nil {
+                currentNode!.child[String(letter)] = TrieNode(letter: letter, leadingLetters: leadingLetters, nodeValue: nodeValue, fullWord: fulllWord)
             }
             
-            currentNode = currentNode!.child[letter]
+            currentNode = currentNode!.child[String(letter)]
         }
     }
     
-    func find(key:String) {
+//    func crawlTheTrie(node: TrieNode) -> [String] {
+//        
+//        let nodeString = node.leadingLetters + node.letter
+//        var nodeList:[String] = [nodeString]
+//
+//        if node.child.count != 0 {
+//            for child in node.child.values {
+//                
+//                let list = crawlTheTrie(child)
+//                nodeList += list
+//            }
+//        }
+//        
+//        PersistanceManager().archiveOne(node)
+//        return nodeList
+//    }
+
+    func crawlTheTrie(_ node: TrieNode) -> [TrieNode] {
+ 
+        var nodeList:[TrieNode] = [node]
+        
+        if node.child.count != 0 {
+            for child in node.child.values {
+                
+                let nodes = crawlTheTrie(child)
+                nodeList.append(contentsOf: nodes)
+            }
+        }
+        return nodeList
+    }
+    
+    func find(_ key:String) {
         let keyLength = key.characters.count
         
         var currentNode:TrieNode? = root
         var characterCount = 0
         
         for character in key.characters {
-            currentNode = currentNode!.child[character]
+            currentNode = currentNode!.child[String(character)]
             
             if currentNode == nil {
                 return
@@ -52,8 +83,7 @@ class TrieManager {
         }
     }
     
-    func findAnagramsOf(key:String, node:TrieNode) -> [String : Int] {
-       // print("Node: \(node.letter)")
+    func findAnagramsOf(_ key:String, node:TrieNode) -> [String : Int] {
         let keyLength = key.characters.count
 
         var wordList:[String : Int] = [:]
@@ -72,26 +102,36 @@ class TrieManager {
         var uniqueRemainingKey = Set<Character>()
         var found = false
         
-        for char in key.characters {
-            if char == node.letter && !found {
+        for character in key.characters {
+            if character == Character(node.letter) && !found {
                 found = true
             } else {
-                remainingKey = remainingKey + String(char)
-                uniqueRemainingKey.insert(char)
+                remainingKey = remainingKey + String(character)
+                uniqueRemainingKey.insert(character)
             }
         }
 
         // Use uniqueRemainingKey set to traverse each necessary node only once.
         if uniqueRemainingKey.count >= 1 {
-            for char in uniqueRemainingKey {
-                if node.child[char] != nil {
-                    let results = findAnagramsOf(remainingKey, node: node.child[char]!) as [String : Int]
+            for character in uniqueRemainingKey {
+                if node.child[String(character)] != nil {
+                    let results = findAnagramsOf(remainingKey, node: node.child[String(character)]!) as [String : Int]
                     wordList.merge(results)
                 }
             }
         }
         return wordList
     }
+    
+    
+    // MARK: Writing to file
+    
+    func getDocumentsDirectory() -> NSString {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory as NSString
+    }
+    
 
     // MARK: Word Value
     
@@ -125,3 +165,4 @@ class TrieManager {
     ]
 
 }
+

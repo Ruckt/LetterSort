@@ -14,6 +14,7 @@
 		E23755C71CD536A0000B26B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23755C61CD536A0000B26B0 /* Assets.xcassets */; };
 		E23755CA1CD536A0000B26B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23755C81CD536A0000B26B0 /* LaunchScreen.storyboard */; };
 		E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755D11CD5413D000B26B0 /* TrieManager.swift */; };
+		E2474B2F1D7C83DE0030B24D /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */; };
 		E24DC6361D3F344A00472F33 /* TrieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24DC6341D3F344A00472F33 /* TrieEntity.swift */; };
 		E24DC63A1D4423D700472F33 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24DC6391D4423D700472F33 /* CoreDataStore.swift */; };
 		E28227661D4C1E60009FEA9B /* Dictionary+Combining.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28227651D4C1E60009FEA9B /* Dictionary+Combining.swift */; };
@@ -31,6 +32,7 @@
 		E23755C91CD536A0000B26B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E23755CB1CD536A0000B26B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23755D11CD5413D000B26B0 /* TrieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieManager.swift; sourceTree = "<group>"; };
+		E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		E24DC6341D3F344A00472F33 /* TrieEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieEntity.swift; sourceTree = "<group>"; };
 		E24DC6391D4423D700472F33 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		E28227651D4C1E60009FEA9B /* Dictionary+Combining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Combining.swift"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				E23755D11CD5413D000B26B0 /* TrieManager.swift */,
 				E20BB06A1D3C6D0000119A94 /* TrieModel.xcdatamodeld */,
 				E24DC6341D3F344A00472F33 /* TrieEntity.swift */,
+				E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */,
 				E2BD20031D035D4700B78A91 /* TrieNode.swift */,
 				E24DC6391D4423D700472F33 /* CoreDataStore.swift */,
 				E23755C31CD536A0000B26B0 /* Main.storyboard */,
@@ -112,11 +115,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Ruckt;
 				TargetAttributes = {
 					E23755BB1CD536A0000B26B0 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -163,6 +167,7 @@
 				E20BB06C1D3C6D0000119A94 /* TrieModel.xcdatamodeld in Sources */,
 				E28227661D4C1E60009FEA9B /* Dictionary+Combining.swift in Sources */,
 				E23755C21CD536A0000B26B0 /* CentralViewController.swift in Sources */,
+				E2474B2F1D7C83DE0030B24D /* PersistanceManager.swift in Sources */,
 				E23755C01CD536A0000B26B0 /* AppDelegate.swift in Sources */,
 				E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */,
 			);
@@ -204,8 +209,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -250,8 +257,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -270,6 +279,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -280,9 +290,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Letter Sort/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ruckt.Letter-Sort";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -291,9 +303,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Letter Sort/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ruckt.Letter-Sort";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
