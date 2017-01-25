@@ -10,38 +10,61 @@ import UIKit
 import CoreData
 import Foundation
 
-//@UIApplicationMain
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var container: NSPersistentContainer!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         print("HELLO LETTER SORT")
         
-        // let dataStore = CoreDataStore()
+        let dataStore = CoreDataStore()
+        let container = dataStore.persistentContainer.viewContext
+
         
-        var filePath : String {
-            let manager = FileManager.default
-            let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
-            return url.appendingPathComponent("TrieData").path
-        }
+//        var filePath : String {
+//            let manager = FileManager.default
+//            let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+//            return url.appendingPathComponent("TrieData").path
+//        }
         
         let trie:TrieManager = TrieManager()
         let centralVC = self.window!.rootViewController as! CentralViewController
         
         if (true) {
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [unowned self] in
+ //           DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [unowned self] in
                 
-                if let nodes = self.readFromFile() {
-                    print("Un Archived: \(nodes.count)")
-                    trie.root = nodes[0]
-                    
-                    centralVC.trie = trie
-                    centralVC.isTrieMade = true
-                    centralVC.titleLabel.textColor = centralVC.givenColor
+                let request = TrieEntity.createFetchRequest()
+                
+                do {
+                    let allNodes = try dataStore.persistentContainer.viewContext.fetch(request)
+                
+                    let trieEntity = allNodes[0] as TrieEntity
+                    let node = TrieNode(letter: Character(trieEntity.letter), leadingLetters: trieEntity.leadingLetters, nodeValue: Int(trieEntity.nodeValue), fullWord: trieEntity.fullWord)
+                    let something: Dictionary?  = NSKeyedUnarchiver.unarchiveObject(with: trieEntity.child) as? [String:TrieNode]
+                    print("Got \(allNodes.count) Nodes")
+                    print(node.leadingLetters)
+                    print(node.letter)
+                    print(something!)
+                    print(trieEntity)
+                } catch {
+                    print("Fetch failed")
                 }
-            }
+//            }
+                
+                
+//                if let nodes = self.readFromFile() {
+//                    // 12 +seconds
+//                    print("Un Archived: \(nodes.count)")
+//                    trie.root = nodes[0]
+//                    
+//                    centralVC.trie = trie
+//                    centralVC.isTrieMade = true
+//                    centralVC.titleLabel.textColor = centralVC.givenColor
+//                }
+//            }
         } else {
             DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [unowned self] in
                 
@@ -49,19 +72,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 wordList.enumerateLines(invoking: { (line, stop) in
                     trie.insertWord(line)
                 })
-                
+                // 10 seconds
                 print("Trie Made")
                 centralVC.trie = trie
                 centralVC.isTrieMade = true
                 centralVC.titleLabel.textColor = centralVC.givenColor
                 
                 DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [unowned trie] in
-                    let list = trie.crawlTheTrie(trie.root)
-                    PersistanceManager().archiveOne(list)
+                    
+                    trie.addEachNodeToCoreData(trie.root, context: container)
+                    print("DONE DONE")
+                    dataStore.saveContext()
+                    print("Context saved")
+                    
+                    // let list = trie.crawlTheTrie(trie.root)
+
+                    //PersistanceManager().archiveOne(list)
                     // let alpha = list.sort { $0 < $1 }
                     
                     //Count = 589,315
-                    print("Count: \(list.count)")
+                    //Over 70 seconds
+                    //print("Count: \(list.count)")
                 }
             }
         }
@@ -111,6 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    /*
     func testCD() {
         
         print("Test CD")
@@ -156,6 +188,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Failed to fetch person: \(error)")
         }
     }
-
+*/
 }
 

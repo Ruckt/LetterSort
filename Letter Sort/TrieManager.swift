@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class TrieManager {
     var root:TrieNode = TrieNode(letter: "\0", leadingLetters: "", nodeValue: 0, fullWord: false)
@@ -60,6 +61,43 @@ class TrieManager {
         }
         return nodeList
     }
+    
+    func addEachNodeToCoreData(_ node: TrieNode, context: NSManagedObjectContext) {
+        
+        let word = node.leadingLetters
+        if (node.fullWord) {
+            print("\(word) is A word!")
+        } else {
+            print(word)
+        }
+        
+        let trieEntity = TrieEntity(context: context)
+        configure(trieEntity: trieEntity, using: node)
+        
+        if node.child.count != 0 {
+            for child in node.child.values {
+                addEachNodeToCoreData(child, context: context)
+            }
+        }
+    }
+    
+    func configure(trieEntity: TrieEntity, using node: TrieNode) {
+        trieEntity.fullWord = node.fullWord
+        trieEntity.leadingLetters = node.leadingLetters
+        trieEntity.letter = node.letter
+        
+        let value = node.nodeValue as NSNumber
+        trieEntity.nodeValue = value
+        
+        let child : Data = NSKeyedArchiver.archivedData(withRootObject: node.child)
+        trieEntity.child = child
+        
+    
+        //http://stackoverflow.com/questions/8682324/insert-nsdictionary-into-coredata
+        
+    }
+    
+    
     
     func find(_ key:String) {
         let keyLength = key.characters.count

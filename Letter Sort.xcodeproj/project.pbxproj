@@ -15,11 +15,12 @@
 		E23755CA1CD536A0000B26B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23755C81CD536A0000B26B0 /* LaunchScreen.storyboard */; };
 		E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23755D11CD5413D000B26B0 /* TrieManager.swift */; };
 		E2474B2F1D7C83DE0030B24D /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */; };
-		E24DC6361D3F344A00472F33 /* TrieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24DC6341D3F344A00472F33 /* TrieEntity.swift */; };
 		E24DC63A1D4423D700472F33 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24DC6391D4423D700472F33 /* CoreDataStore.swift */; };
 		E28227661D4C1E60009FEA9B /* Dictionary+Combining.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28227651D4C1E60009FEA9B /* Dictionary+Combining.swift */; };
 		E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BD20031D035D4700B78A91 /* TrieNode.swift */; };
 		E2BD20061D03711B00B78A91 /* WordList.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2BD20051D03711B00B78A91 /* WordList.txt */; };
+		E2DBD1BD1D93888F007182D7 /* TrieEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DBD1BB1D93888F007182D7 /* TrieEntity+CoreDataClass.swift */; };
+		E2DBD1BE1D93888F007182D7 /* TrieEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DBD1BC1D93888F007182D7 /* TrieEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,11 +34,12 @@
 		E23755CB1CD536A0000B26B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23755D11CD5413D000B26B0 /* TrieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieManager.swift; sourceTree = "<group>"; };
 		E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
-		E24DC6341D3F344A00472F33 /* TrieEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieEntity.swift; sourceTree = "<group>"; };
 		E24DC6391D4423D700472F33 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		E28227651D4C1E60009FEA9B /* Dictionary+Combining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Combining.swift"; sourceTree = "<group>"; };
 		E2BD20031D035D4700B78A91 /* TrieNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieNode.swift; sourceTree = "<group>"; };
 		E2BD20051D03711B00B78A91 /* WordList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WordList.txt; sourceTree = "<group>"; };
+		E2DBD1BB1D93888F007182D7 /* TrieEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrieEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2DBD1BC1D93888F007182D7 /* TrieEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrieEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +77,9 @@
 				E28227651D4C1E60009FEA9B /* Dictionary+Combining.swift */,
 				E23755D11CD5413D000B26B0 /* TrieManager.swift */,
 				E20BB06A1D3C6D0000119A94 /* TrieModel.xcdatamodeld */,
-				E24DC6341D3F344A00472F33 /* TrieEntity.swift */,
 				E2474B2E1D7C83DE0030B24D /* PersistanceManager.swift */,
+				E2DBD1BB1D93888F007182D7 /* TrieEntity+CoreDataClass.swift */,
+				E2DBD1BC1D93888F007182D7 /* TrieEntity+CoreDataProperties.swift */,
 				E2BD20031D035D4700B78A91 /* TrieNode.swift */,
 				E24DC6391D4423D700472F33 /* CoreDataStore.swift */,
 				E23755C31CD536A0000B26B0 /* Main.storyboard */,
@@ -120,6 +123,7 @@
 				TargetAttributes = {
 					E23755BB1CD536A0000B26B0 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 266QWC925V;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -163,12 +167,13 @@
 			files = (
 				E24DC63A1D4423D700472F33 /* CoreDataStore.swift in Sources */,
 				E23755D21CD5413D000B26B0 /* TrieManager.swift in Sources */,
-				E24DC6361D3F344A00472F33 /* TrieEntity.swift in Sources */,
 				E20BB06C1D3C6D0000119A94 /* TrieModel.xcdatamodeld in Sources */,
+				E2DBD1BD1D93888F007182D7 /* TrieEntity+CoreDataClass.swift in Sources */,
 				E28227661D4C1E60009FEA9B /* Dictionary+Combining.swift in Sources */,
 				E23755C21CD536A0000B26B0 /* CentralViewController.swift in Sources */,
 				E2474B2F1D7C83DE0030B24D /* PersistanceManager.swift in Sources */,
 				E23755C01CD536A0000B26B0 /* AppDelegate.swift in Sources */,
+				E2DBD1BE1D93888F007182D7 /* TrieEntity+CoreDataProperties.swift in Sources */,
 				E2BD20041D035D4700B78A91 /* TrieNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 266QWC925V;
 				INFOPLIST_FILE = "Letter Sort/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -302,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 266QWC925V;
 				INFOPLIST_FILE = "Letter Sort/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
